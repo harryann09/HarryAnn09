@@ -1,63 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Calculator</title>
+    <title>Grade Calculator</title>
+    <style>
+        body {
+        background-color: beige ;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        div {
+            text-align: center;
+        }
+
+        #averageResult{text-align:center;}
+        .result {
+            text-align: center;
+        }
+    </style>
+    <script src="script.js"></script>
 </head>
 <body>
+    <h1>Student Form</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
 
-<h2>Simple Calculator</h2>
+        <label for="section">Section:</label>
+        <input type="text" id="section" name="section"><br><br>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label for="num1">Number 1:</label>
-    <input type="text" name="num1" required>
-    <br>
-    <label for="num2">Number 2:</label>
-    <input type="text" name="num2" required>
-    <br>
-    <label for="operator">Operator:</label>
-    <select name="operator" required>
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-    </select>
-    <br>
-    <input type="submit" value="Calculate">
-</form>
+        <label for="year-level">Year Level:</label>
+        <input type="text" id="year-level" name="year-level"><br><br>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $num1 = $_POST["num1"];
-    $num2 = $_POST["num2"];
-    $operator = $_POST["operator"];
+        <label for="CIT1">CIT1:</label>
+        <input type="number" id="CIT1" name="CIT1"><br><br>
 
-    switch ($operator) {
-        case "+":
-            $result = $num1 + $num2;
-            break;
-        case "-":
-            $result = $num1 - $num2;
-            break;
-        case "*":
-            $result = $num1 * $num2;
-            break;
-        case "/":
-            if ($num2 != 0) {
-                $result = $num1 / $num2;
-            } else {
-                echo "Error: Division by zero.";
-            }
-            break;
-        default:
-            echo "Invalid operator";
-            break;
-    }
+        <label for="CIT17">CIT2:</label>
+        <input type="number" id="CIT2" name="CIT2"><br><br>
 
-    if (isset($result)) {
-        echo "<br><br>Result: $result";
-    }
-}
-?>
+        <label for="CIT14">CIT5:</label>
+        <input type="number" id="CIT5" name="CIT5"><br><br>
 
+        <label for="CC13">CC13:</label>
+        <input type="number" id="CIT14" name="CIT14"><br><br>
+
+        <label for="SOCSCI">SOCSCI:</label>
+        <input type="number" id="SOCSCI" name="SOCSCI"><br><br>
+
+        <button type="button" onclick="calculate()">Calculate Average</button>
+    </form>
+
+    <div id="output"></div>
 </body>
 </html>
