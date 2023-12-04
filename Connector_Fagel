@@ -1,0 +1,35 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "StudentRecord";
+
+    $conn = new mysqli($servername,$username,$password,$dbname);
+
+    if ($conn->connect_error){
+        die ("Connection Failed." . $conn->connect_error);
+    }
+    //else 
+    //  echo "Connected Successfully";
+
+    $sql="Select * from StudentRecord";
+    $result=$conn->query("$sql");
+
+    if ($result){
+        while ($row=$result->fetch_assoc()){
+            echo "Id Number: " .$row["StudentID"] ."<br>"
+            "Last Name: " .$row["LastName"] ."<br>"
+            "First Name: " .$row["FirstName"] . "<br>"
+            "Date Of Birth: " .$row["DateOfBirth"] ."<br>"
+            "Email: " .$row["Email"] ."<br>"
+            "Contact Number: " .$row["Phone"] ."<br>"
+            "<br>";
+        
+        }
+    }
+
+    else{
+        echo "Error: " . $sql ."<br>" . $conn->error;
+    }    
+
+?>
