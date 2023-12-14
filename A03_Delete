@@ -1,0 +1,29 @@
+<?php
+$servername = "your_server_name";
+$username = "your_username";
+$password = "your_password";
+$dbname = "studentinfo";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Sample data
+$id_to_delete = 1;
+
+// SQL query to delete data
+$sql = "DELETE FROM users WHERE id=$id_to_delete";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . $conn->error;
+}
+
+// Close connection
+$conn->close();
+?>
