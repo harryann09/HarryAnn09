@@ -1,0 +1,30 @@
+<?php
+$servername = "your_server_name";
+$username = "your_username";
+$password = "your_password";
+$dbname = "studentinfo";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Sample data
+$username = "john_doe";
+$email = "john.doe@example.com";
+
+// SQL query to insert data
+$sql = "INSERT INTO users (username, email) VALUES ('$username', '$email')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+// Close connection
+$conn->close();
+?>
